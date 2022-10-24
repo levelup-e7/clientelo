@@ -8,10 +8,9 @@ public class Pedido {
     private String categoria;
     private String produto;
     private String cliente;
-
     private BigDecimal preco;
     private int quantidade;
-
+    private BigDecimal totalPedido;
     private LocalDate data;
 
     public Pedido(String categoria, String produto, String cliente, BigDecimal preco, int quantidade, LocalDate data) {
@@ -20,6 +19,7 @@ public class Pedido {
         this.cliente = cliente;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.totalPedido = this.preco.multiply(new BigDecimal(this.quantidade));
         this.data = data;
     }
 
@@ -41,6 +41,10 @@ public class Pedido {
 
     public int getQuantidade() {
         return quantidade;
+    }
+
+    public BigDecimal getTotalPedido() {
+        return totalPedido;
     }
 
     public LocalDate getData() {
